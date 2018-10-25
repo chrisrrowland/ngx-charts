@@ -224,6 +224,11 @@ var BarVerticalStackedComponent = /** @class */ (function (_super) {
         var idx = this.activeEntries.findIndex(function (d) {
             return d.name === item.name && d.value === item.value && d.series === item.series;
         });
+
+        if (idx < 0) {
+          return;
+        }
+
         this.activeEntries.splice(idx, 1);
         this.activeEntries = this.activeEntries.slice();
         this.deactivate.emit({ value: item, entries: this.activeEntries });
